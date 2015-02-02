@@ -95,7 +95,7 @@ func writer(db fdb.Database, localId int, values chan [][]byte) {
 		sequence++
 	}
 
-	glog.Infof("%v: finished, %v success, %v failed", localId, success, failed)
+	glog.Infof("%v: finished, %v transactions succeeded, %v transactions failed", localId, success, failed)
 }
 
 // returns key in human readable format
