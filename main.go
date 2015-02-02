@@ -76,6 +76,7 @@ func writer(db fdb.Database, localId int, values chan [][]byte) {
 			})
 
 			transaction.Set(key, value)
+			sequence++
 
 			if glog.V(2) {
 				glog.Infof("%v: %v", localId, keyToString(key))
@@ -91,8 +92,6 @@ func writer(db fdb.Database, localId int, values chan [][]byte) {
 		} else {
 			success++
 		}
-
-		sequence++
 	}
 
 	glog.Infof("%v: finished, %v transactions succeeded, %v transactions failed", localId, success, failed)
